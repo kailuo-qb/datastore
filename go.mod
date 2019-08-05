@@ -1,4 +1,4 @@
-module go.mercari.io/datastore
+module github.com/kailuo-qb/datastore
 
 go 1.12
 
