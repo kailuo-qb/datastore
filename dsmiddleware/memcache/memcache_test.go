@@ -48,7 +48,7 @@ func TestMemcache_Basic(t *testing.T) {
 
 	memcacheClient := memcache.New(os.Getenv("MEMCACHE_ADDR"))
 	ch := New(
-		*memcacheClient,
+		memcacheClient,
 		WithLogger(logf),
 	)
 	client.AppendMiddleware(ch)
@@ -151,7 +151,7 @@ func TestMemcache_BasicWithoutExpire(t *testing.T) {
 
 	memcacheClient := memcache.New(os.Getenv("MEMCACHE_ADDR"))
 	ch := New(
-		*memcacheClient,
+		memcacheClient,
 		WithExpireDuration(0),
 		WithLogger(logf),
 	)
@@ -254,7 +254,7 @@ func TestMemcache_MultiError(t *testing.T) {
 
 	memcacheClient := memcache.New(os.Getenv("MEMCACHE_ADDR"))
 	ch := New(
-		*memcacheClient,
+		memcacheClient,
 		WithLogger(logf),
 	)
 	client.AppendMiddleware(ch)

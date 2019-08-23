@@ -16,12 +16,12 @@ var _ datastore.Middleware = &cacheHandler{}
 const defaultExpiration = 15 * time.Minute
 
 // New memcache middleware creates & returns.
-func New(client memcache.Client, opts ...CacheOption) interface {
+func New(client *memcache.Client, opts ...CacheOption) interface {
 	datastore.Middleware
 	storagecache.Storage
 } {
 	ch := &cacheHandler{
-		client:         &client,
+		client:         client,
 		stOpts:         &storagecache.Options{},
 		expireDuration: defaultExpiration,
 	}
